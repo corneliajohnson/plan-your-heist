@@ -50,6 +50,16 @@ namespace PlanYourHeist
       //Sum the skill levels of the team. Save that number.
       IEnumerable<int> total = wholeTeam.Select(member => member.SkillLevel);
       int teamTotalSkillLevel = total.Sum();
+
+      //Compare the number with the bank's difficulty level. If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message, otherwise display a failure message.
+      if (teamTotalSkillLevel >= bankDifficultyLevel)
+      {
+        Console.WriteLine("Money! Money! Money! Monday!");
+      }
+      else
+      {
+        Console.WriteLine("Being Free anb broke is better than jail and broke.");
+      }
     }
 
     static TeamMember CreateTeamMember()
