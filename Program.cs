@@ -20,9 +20,18 @@ namespace PlanYourHeist
       while (answer == "y")
       {
         newTeamMember = CreateTeamMember();
-        wholeTeam.Add(newTeamMember);
-        Console.Write("Add A New Member? Y/N  ");
-        answer = Console.ReadLine().ToLower();
+        //Stop collecting team members when a blank name is entered.
+        if (!string.IsNullOrEmpty(newTeamMember.Name))
+        {
+          wholeTeam.Add(newTeamMember);
+          Console.Write("Add A New Member? Y/N  ");
+          answer = Console.ReadLine().ToLower();
+        }
+        else
+        {
+          Console.WriteLine(@"Error Member Must have name try again
+          NAMELESS MEMBER WAS NOT ADDED");
+        }
       }
       //Display a message containing the number of members of the team.
       Console.WriteLine($"You Have {wholeTeam.Count} Team Members");
