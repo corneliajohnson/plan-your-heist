@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PlanYourHeist
 {
@@ -6,9 +7,22 @@ namespace PlanYourHeist
   {
     static void Main(string[] args)
     {
+      TeamMember newMember = CreateTeamMember();
+      //Create a way to store several team members.
+      var wholeTeam = new List<TeamMember>();
+      wholeTeam.Add(newMember);
+
+      wholeTeam.ForEach(member => Console.WriteLine($@"
+        Name: {member.Name}
+        Skill Level: {member.SkillLevel}
+        Courage: {member.Courage}
+        "));
+    }
+
+    static TeamMember CreateTeamMember()
+    {
       //Print the message "Plan Your Heist!".
       Console.WriteLine("Plan Your Heist!");
-
       //Prompt the user to enter a team member's name and save that name.
       Console.Write("Enter Team Memebr Name: ");
       string name = Console.ReadLine();
@@ -19,24 +33,7 @@ namespace PlanYourHeist
       Console.Write($"Enter {name}'s courage factor: ");
       decimal courage = decimal.Parse(Console.ReadLine());
 
-      CreateTeamMember(name, skillLevel, courage);
-
-    }
-
-    static void CreateTeamMember(string name, int skillLevel, decimal courage)
-    {
-      new TeamMember()
-      {
-        Name = name,
-        SkillLevel = skillLevel,
-        Courage = courage
-      };
-
-      //display on screen 
-      Console.WriteLine($@"
-      Name: {name}
-      Skill Level: {skillLevel}
-      Courage Factor: {courage}");
+      return new TeamMember(name, skillLevel, courage);
     }
   }
 }

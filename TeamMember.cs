@@ -8,11 +8,11 @@ namespace PlanYourHeist
     public int SkillLevel;
     public decimal Courage;
 
-    // public TeamMember(string name, int skilllevel, decimal courage)
-    // {
-    //   Name = name;
-    //   SkillLevel = skilllevel;
-    //   Courage = courage;
-    // }
+    public TeamMember(string name, int skilllevel, decimal courage)
+    {
+      Name = name;
+      SkillLevel = skilllevel;
+      Courage = courage;
+    }
   }
 }
