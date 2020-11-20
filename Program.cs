@@ -15,6 +15,9 @@ namespace PlanYourHeist
       //Store a value for the bank's difficulty level. Set this value to 100.
       int bankDifficultyLevel = 100;
 
+      //Create a random number between -10 and 10 for the heist's luck value.
+      var luckValue = new Random().Next(-10, 11);
+
       //Print the message "Plan Your Heist!".
       Console.WriteLine("Plan Your Heist!");
 
@@ -51,8 +54,12 @@ namespace PlanYourHeist
       IEnumerable<int> total = wholeTeam.Select(member => member.SkillLevel);
       int teamTotalSkillLevel = total.Sum();
 
+      //Before displaying the success or failure message, display  team's combined skill level and bank's difficulty level
+      Console.WriteLine($"Team Cobined Skill Level: {teamTotalSkillLevel}");
+      Console.WriteLine($"Bank Difficulty Level: {teamTotalSkillLevel + luckValue}");
+
       //Compare the number with the bank's difficulty level. If the team's skill level is greater than or equal to the bank's difficulty level, Display a success message, otherwise display a failure message.
-      if (teamTotalSkillLevel >= bankDifficultyLevel)
+      if (teamTotalSkillLevel + luckValue >= bankDifficultyLevel)
       {
         Console.WriteLine("Money! Money! Money! Monday!");
       }
