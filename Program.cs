@@ -12,22 +12,29 @@ namespace PlanYourHeist
       var wholeTeam = new List<TeamMember>();
       var newTeamMember = new TeamMember();
 
-      //Store a value for the bank's difficulty level. Set this value to 100.
-      int bankDifficultyLevel = 100;
-
       //Create a random number between -10 and 10 for the heist's luck value.
       var luckValue = new Random().Next(-10, 11);
 
       //Print the message "Plan Your Heist!".
       Console.WriteLine("Plan Your Heist!");
       Console.WriteLine();
+
+      //Store a value for the bank's difficulty level
+      Console.Write("Enter bank's difficulty level:  ");
+      int bankDifficultyLevel = int.Parse(Console.ReadLine());
+
+      //Store a value trial runs
       Console.Write("Enter the number of trial runs the program should perform:  ");
       int trailRuns = int.Parse(Console.ReadLine());
       int count = 0;
+      int successfulRun = 0;
+      int failedRun = 0;
       while (count < trailRuns)
       {
         //Collect several team members' information.
+        wholeTeam.Clear(); // clear for new team
         Console.WriteLine();
+        Console.WriteLine($"New Trail Run");
         Console.Write("Add A New Member? Y/N  ");
         string answer = Console.ReadLine().ToLower();
         Console.WriteLine();
@@ -62,13 +69,18 @@ namespace PlanYourHeist
         if (teamTotalSkillLevel >= bankDifficultyLevel + luckValue)
         {
           Console.WriteLine("Money! Money! Money! Monday!");
+          successfulRun++;
         }
         else
         {
           Console.WriteLine("Being Free anb broke is better than jail and broke.");
+          failedRun++;
         }
         count++;
       }
+      Console.WriteLine($@"
+      Sucessful Runs: {successfulRun}
+      Failed Runs: {failedRun}");
     }
 
     static TeamMember CreateTeamMember()
